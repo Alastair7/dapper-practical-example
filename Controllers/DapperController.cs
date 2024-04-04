@@ -42,13 +42,48 @@ namespace DapperPracticalExample.Controllers
         [HttpGet("GetPersons")]
         public async Task<ActionResult<PersonDTO>> GetPersons() 
         {
-            var personEntity = await dbRepository.GetPersons();
+            var personEntities = await dbRepository.GetPersons();
 
-            return  Ok(personEntity);
+            if (personEntities == null) return NotFound();
+
+            var result = personEntities
+                .Select(DapperMapper.PersonEntityToPersonDTO);
+
+            return Ok(result);
         }
 
-        // Insert
-        // Delete
-        // Update
+        [HttpPost("InsertPerson")]
+        public async Task<ActionResult<string>> InsertAuthor([FromBody] 
+        AuthorDTO authorDTO)
+        {
+            var authorEntity = DapperMapper.AuthorDTOToAuthorEntity(authorDTO);
+
+            var result = await dbRepository.InsertAuthor(authorEntity);
+
+            string message = result > 0 ? $"SUCCESS {result}" : "ERROR";
+            return Ok(message);
+        }
+
+        [HttpPut("UpdatePerson")]
+        public async Task<ActionResult<string>> UpdateAuthor([FromBody]
+        AuthorDTO authorDTO)
+        {
+            var authorEntity = DapperMapper.AuthorDTOToAuthorEntity(authorDTO);
+
+            var result = await dbRepository.UpdateAuthor(authorEntity);
+
+            string message = result > 0 ? $"SUCCESS {result}" : "ERROR";
+            return Ok(message);
+        }
+
+        [HttpDelete("DeletePerson")]
+        public async Task<ActionResult<string>> DeleteAuthor([FromQuery]
+        long authorId)
+        {
+            var result = await dbRepository.DeleteAuthor(authorId);
+
+            string message = result > 0 ? $"SUCCESS {result}" : "ERROR";
+            return Ok(message);
+        }
     }
 }

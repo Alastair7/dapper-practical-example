@@ -18,7 +18,7 @@ namespace DapperPracticalExample.Models.DTO
 
 
         [JsonProperty("pageNumber")]
-        public int PageNumber { get; set; }
+        public int PagesNumber { get; set; }
 
 
         [JsonProperty("author")]

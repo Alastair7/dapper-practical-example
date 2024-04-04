@@ -9,6 +9,12 @@ namespace DapperPracticalExample.DB
         Task<AuthorEntity> GetAuthor(long authorId);
 
         Task<IEnumerable<PersonEntity>> GetPersons();
-        
+
+        Task<long> InsertAuthor(AuthorEntity author);
+
+        Task<long> UpdateAuthor(AuthorEntity author);
+
+        Task<long> DeleteAuthor(long authorId);
+
     }
 }

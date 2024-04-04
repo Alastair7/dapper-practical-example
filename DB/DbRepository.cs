@@ -15,6 +15,7 @@ namespace DapperPracticalExample.DB
                 "Trusted_Connection=True;";
         }
 
+
         public async Task<AuthorEntity> GetAuthor(long authorId)
         {
             AuthorEntity result;
@@ -129,6 +130,102 @@ namespace DapperPracticalExample.DB
 
                 result = personDictionary.Values;
 
+
+                return result;
+            });
+        }
+
+        public async Task<long> InsertAuthor(AuthorEntity author)
+        {
+            long result = 0;
+
+            return await Task.Run(() => 
+            {
+                using SqlConnection connection = new (connectionString);
+
+                if (connection.State != ConnectionState.Open) 
+                {
+                    connection.Open();
+                }
+
+                var sql = @"INSERT INTO [dapperdev].[dbo].[authors] (Name) 
+                            VALUES (@Name)";
+
+                var transaction = connection.BeginTransaction();
+
+                try 
+                {
+                    result = connection.Execute(sql, author, transaction);
+                    transaction.Commit();
+                } catch (Exception) 
+                {
+                    transaction.Rollback();
+                }
+
+                return result;
+            });
+        }
+        public async Task<long> DeleteAuthor(long authorId)
+        {
+            long result = 0;
+
+            return await Task.Run(() =>
+            {
+                using SqlConnection connection = new(connectionString);
+
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
+                var sql = @"DELETE FROM [dapperdev].[dbo].[authors] WHERE 
+                            AuthorId = @authorId";
+
+                var transaction = connection.BeginTransaction();
+
+                try
+                {
+                    result = connection.Execute(sql, new { authorId },
+                        transaction);
+
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
+
+                return result;
+            });
+         }
+
+        public async Task<long> UpdateAuthor(AuthorEntity author)
+        {
+            long result = 0;
+
+            return await Task.Run(() =>
+            {
+                using SqlConnection connection = new(connectionString);
+
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
+                var sql = @"UPDATE [dapperdev].[dbo].[authors]
+                            SET NAME = @Name WHERE AuthorId = @AuthorId";
+
+                var transaction = connection.BeginTransaction();
+
+                try
+                {
+                    result = connection.Execute(sql, author, transaction);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
 
                 return result;
             });
