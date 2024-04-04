@@ -38,5 +38,17 @@ namespace DapperPracticalExample.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("GetPersons")]
+        public async Task<ActionResult<PersonDTO>> GetPersons() 
+        {
+            var personEntity = await dbRepository.GetPersons();
+
+            return  Ok(personEntity);
+        }
+
+        // Insert
+        // Delete
+        // Update
     }
 }

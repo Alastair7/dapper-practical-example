@@ -7,6 +7,8 @@ namespace DapperPracticalExample.DB
         Task<IEnumerable<AuthorEntity>> GetAuthors();
 
         Task<AuthorEntity> GetAuthor(long authorId);
+
+        Task<IEnumerable<PersonEntity>> GetPersons();
         
     }
 }
