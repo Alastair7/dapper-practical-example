@@ -4,10 +4,27 @@
 
 
 ### Requirements
-- .NET 8
+- .NET 6.0
 - Visual Studio 2022 Community (Optional. It's the version used for this example)
 
 ## How to build and execute the project
 1. Clone this repo.
 2. Select IIS Server.
 3. Click Run.
+
+## How to create the DB and add data model with data
+
+### Creating the DB
+1. Install [SQL Server - Express ](https://www.microsoft.com/es-es/sql-server/sql-server-downloads)
+2. Install Microsoft SQL Server Management Studio (MSSM).
+3.Login to your localhost DB: 
+	- Server Type: Database Engine
+	- Server Name: [PC-NAME]\SQLEXPRESS
+	- Authentication: Windows Authentication
+4. Right Click on Databases folder ->> New Database ->> Set Database name (dapperdev for this practical example), then click OK.
+
+### Adding data model and data
+1. Right click on DB name (dapperdev) ->> New Query.
+2. Paste DapperDB.sql script.
+3. Execute script.
+
