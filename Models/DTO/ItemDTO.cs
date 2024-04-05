@@ -9,10 +9,10 @@ namespace DapperPracticalExample.Models.DTO
         public long Itemid { get; set; }
 
         [JsonProperty("name")]
-        public required string Name { get; set; }
+        public  string Name { get; set; }
 
         [JsonProperty("description")]
-        public required string Description { get; set; }
+        public  string Description { get; set; }
 
     }
 }

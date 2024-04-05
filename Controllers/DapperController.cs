@@ -52,7 +52,7 @@ namespace DapperPracticalExample.Controllers
             return Ok(result);
         }
 
-        [HttpPost("InsertPerson")]
+        [HttpPost("InsertAuthor")]
         public async Task<ActionResult<string>> InsertAuthor([FromBody] 
         AuthorDTO authorDTO)
         {
@@ -64,7 +64,7 @@ namespace DapperPracticalExample.Controllers
             return Ok(message);
         }
 
-        [HttpPut("UpdatePerson")]
+        [HttpPut("UpdateAuthor")]
         public async Task<ActionResult<string>> UpdateAuthor([FromBody]
         AuthorDTO authorDTO)
         {
@@ -76,7 +76,7 @@ namespace DapperPracticalExample.Controllers
             return Ok(message);
         }
 
-        [HttpDelete("DeletePerson")]
+        [HttpDelete("DeleteAuthor")]
         public async Task<ActionResult<string>> DeleteAuthor([FromQuery]
         long authorId)
         {

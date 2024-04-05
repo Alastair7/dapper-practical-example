@@ -41,7 +41,7 @@ namespace DapperPracticalExample.DB
 
         public async  Task<IEnumerable<AuthorEntity>> GetAuthors()
         {
-            IEnumerable<AuthorEntity> result = [];
+            IEnumerable<AuthorEntity> result = Enumerable.Empty<AuthorEntity>();
             return await Task.Run(() =>
             {
                 using SqlConnection connection = new(connectionString);
@@ -59,7 +59,7 @@ namespace DapperPracticalExample.DB
 
         public async Task<IEnumerable<PersonEntity>> GetPersons() 
         {
-            IEnumerable<PersonEntity> result = [];
+            IEnumerable<PersonEntity> result = new List<PersonEntity>();
 
             return await Task.Run(() =>
             {
@@ -98,8 +98,8 @@ namespace DapperPracticalExample.DB
                             out PersonEntity existentPerson)) 
                         {
                             existentPerson = person;
-                            person.Items ??= [];
-                            person.Books ??= [];
+                            person.Items ??= new List<ItemEntity>();
+                            person.Books ??= new List<BookEntity>();
 
                             personDictionary.Add(existentPerson.PersonId, 
                                 existentPerson);

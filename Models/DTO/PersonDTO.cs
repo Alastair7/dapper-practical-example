@@ -9,10 +9,10 @@ namespace DapperPracticalExample.Models.DTO
         public long PersonId { get; set; }
 
         [JsonProperty("firstName")]
-        public required string FirstName { get; set; }
+        public  string FirstName { get; set; }
 
         [JsonProperty("lastName")]
-        public required string LastName { get; set; }
+        public  string LastName { get; set; }
 
         [JsonProperty("books")]
         public ICollection<BookDTO>? Books { get; set; }

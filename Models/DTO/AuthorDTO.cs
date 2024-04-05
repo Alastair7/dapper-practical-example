@@ -8,6 +8,6 @@ namespace DapperPracticalExample.Models.DTO
         public long AuthorId { get; set; }
 
         [JsonProperty("name")]
-        public required string Name { get; set; }
+        public string Name { get; set; }
     }
 }
