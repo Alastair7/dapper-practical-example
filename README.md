@@ -17,7 +17,7 @@
 ### Creating the DB
 1. Install [SQL Server - Express ](https://www.microsoft.com/es-es/sql-server/sql-server-downloads)
 2. Install Microsoft SQL Server Management Studio (MSSM).
-3.Login to your localhost DB: 
+3. Login to your localhost DB: 
 	- Server Type: Database Engine
 	- Server Name: [PC-NAME]\SQLEXPRESS
 	- Authentication: Windows Authentication
