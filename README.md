@@ -25,6 +25,6 @@
 
 ### Adding data model and data
 1. Right click on DB name (dapperdev) ->> New Query.
-2. Paste DapperDB.sql script.
+2. Copy-Paste [DapperDB.sql](DapperDB.sql) script.
 3. Execute script.
 
